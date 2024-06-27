@@ -88,6 +88,10 @@ namespace CSPractice1
             // #1 12-8. var 키워드
             var varnumber = 20;
             // var abc; // 멤버변수로 사용 불가, 반드시 초기화 해줘야 함
+
+            // #1 12-9. 입력
+            string input = Console.ReadLine();
+            Console.WriteLine(input);
         }
     }
 }
