@@ -110,6 +110,18 @@ namespace CSPractice1
             {
                 // other
             }
+
+            // #2 13-5. switch 조건문
+            int v = 0;
+            switch(v)
+            {
+                case 0:
+                    //
+                    break;
+                default:
+                    //
+                    break;
+            }
         }
     }
 }
