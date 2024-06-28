@@ -5,9 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CSPractice1
+
 {
+    class FirstClass
+    {
+
+    }
+
     internal class Program
     {
+
+        class ThirdClass
+        {
+
+        }
+
+
         static void Main(string[] args)
         {
             // #1 12-1. 기본 용어
@@ -147,7 +160,7 @@ namespace CSPractice1
                 Console.WriteLine(item);
             }
 
-            // #4 21-2. 클래스 생성
+            // #4 21-2. 클래스 사용
             Random random = new Random();
             Console.WriteLine(random.Next(1, 7));
             Console.WriteLine(random.Next(1, 7));
@@ -162,6 +175,9 @@ namespace CSPractice1
             Console.WriteLine(Math.Min(42, 1)); // 1
             Console.WriteLine(Math.Max(42, 1)); // 42
             Console.WriteLine(Math.PI); // 3.141592~~
+
+            // #4 21-3. 클래스 생성
+
         }
     }
 }
