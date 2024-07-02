@@ -7,254 +7,281 @@ using System.Threading.Tasks;
 namespace CSPractice1
 
 {
-    class Sample
-    {
-        public static int value;
-        static Sample()
-        {
-            value = 10;
-            Console.WriteLine("정적 생성자 호출");
-        }
-        public Sample()
-        {
-            Console.WriteLine("(인스턴스) 생성자 호출");
-        }
 
-        ~Sample()
+    class Box
+    {
+        public int width { get; set; }
+
+        private int height;
+        public int Height
         {
-            Console.WriteLine("소멸자 호출");
+            get { return height; }
+            set
+            {
+                if (value < 0)
+                {
+                    height = value;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
         }
     }
 
-    class MyMath
-    {
-        public static int classVar = 1;
-        public int instanceVar = 2;
-
-        public static int Abs(int input)
+        class Sample
         {
-            Console.WriteLine(classVar);
-            // 클래스 메서드에서 인스턴스 변수 접근 불가
-            // Console.WriteLine(instanceVar);
-            return (input >= 0 ? input : -input);
+            public static int value;
+            static Sample()
+            {
+                value = 10;
+                Console.WriteLine("정적 생성자 호출");
+            }
+            public Sample()
+            {
+                Console.WriteLine("(인스턴스) 생성자 호출");
+            }
+
+            ~Sample()
+            {
+                Console.WriteLine("소멸자 호출");
+            }
         }
 
-        public static double Abs(double input) { return 0; } // Abs(double)
-        // 메서드 시그네이처(이름, 매개변수)가 겹쳐서 안됨
-        // public static double Abs(int input) { return 0; } // Abs(int)
-    }
+        class MyMath
+        {
+            public static int classVar = 1;
+            public int instanceVar = 2;
 
-    class FirstClass
-    {
+            public static int Abs(int input)
+            {
+                Console.WriteLine(classVar);
+                // 클래스 메서드에서 인스턴스 변수 접근 불가
+                // Console.WriteLine(instanceVar);
+                return (input >= 0 ? input : -input);
+            }
 
-    }
+            public static double Abs(double input) { return 0; } // Abs(double)
+                                                                 // 메서드 시그네이처(이름, 매개변수)가 겹쳐서 안됨
+                                                                 // public static double Abs(int input) { return 0; } // Abs(int)
+        }
 
-    internal class Program
-    {
-
-        class ThirdClass
+        class FirstClass
         {
 
         }
 
-
-        static void Main(string[] args)
+        internal class Program
         {
-            // #1 12-1. 기본 용어
 
-            // int base = 0;
-            var abc = 3;
-            // var var = 3;
-
-            // 한 줄 주석
-            /*
-             * 여러 줄 주석
-             */
-            /*** xml 주석 ***/
-
-            // #1 12-2. 출력
-            Console.WriteLine("Hello World");
-            Console.Write("줄바꿈 싫어");
-
-            // #1 12-3. 기본 자료형
-            // 정수
-            Console.WriteLine(52 + 4 - 1);
-            // 사칙연산자 = 산술 연산 = Arithmetic Operator
-            // + - * / %
-
-            // 실수(Real Number)
-            Console.WriteLine(52.0);
-
-            // 문자(Character)
-            Console.WriteLine('A');
-            Console.WriteLine('가');
-
-            // 문자열(string)
-            Console.WriteLine("Hello World");
-            // Escape Character 탈출 문자
-            Console.WriteLine("미\n\\림\t마\"고");
-
-            // 문자열 연결 연산자(Concatenation Operator)
-            Console.WriteLine("Hello" + " " + "World");
-
-            // 문자열 인덱스 접근
-            Console.WriteLine("Hello World"[4]); // "o" 출력
-            // Console.WriteLine("Hello World"[100]); // 예외 발생
-            // Console.WriteLine("Hello World"[-3]); // 예외 발생
-
-            // 주의 (문자열 연결 연산자 X, 덧셈 연산자임)
-            Console.WriteLine('가' + '힣');
-
-            // 논리 (Boolean)
-            Console.WriteLine(true);
-            Console.WriteLine(false);
-
-            // 비교 연산자(Comparison Operator)
-            // == != > < >= <=
-
-            // 논리 연산자(Logical Operator)
-            // && || !
-            Console.WriteLine(!true);
-            Console.WriteLine(true && false);
-            Console.WriteLine(true || false);
-
-
-            // #1 12-4. 변수
-            string s = "문자열 자료형";
-
-            // #1 12-5. 복합 대입 연산자
-            // += -= *= /=
-            string output = "Hello";
-            output += " World";
-            Console.WriteLine(output);
-
-            // #1 12-6. 증감 연산자
-            int number = 10;
-            Console.WriteLine(number++); // 10
-            Console.WriteLine(++number); // 12
-            Console.WriteLine(number--); // 12
-            Console.WriteLine(--number); // 10
-
-            // #1 12-8. var 키워드
-            var varnumber = 20;
-            // var abc; // 멤버변수로 사용 불가, 반드시 초기화 해줘야 함
-
-            // #1 12-9. 입력
-            string input = Console.ReadLine();
-            Console.WriteLine(input);
-
-            // #1 12-10. 자료형 변환
-            // 굉장히 중요!
-
-
-            // #2 13-1. if 조건문
-            bool condition = true;
-            if(condition)
+            class ThirdClass
             {
-                // some
-            } else if(condition)
-            {
-                // some2
-            }
-            else
-            {
-                // other
+
             }
 
-            // #2 13-5. switch 조건문
-            int v = 0;
-            switch(v)
+
+            static void Main(string[] args)
             {
-                case 0:
-                    //
-                    break;
-                default:
-                    //
-                    break;
-            }
+                // #1 12-1. 기본 용어
 
-            // #2 13-6. 삼항 연산자
-            Console.WriteLine(number % 2 == 0 ? true : false);
+                // int base = 0;
+                var abc = 3;
+                // var var = 3;
 
-            // #3 14-1. 반복문과 배열
-            int[] intArray = new int[100];
-            Console.WriteLine(intArray[99]);
+                // 한 줄 주석
+                /*
+                 * 여러 줄 주석
+                 */
+                /*** xml 주석 ***/
 
-            // #3 14-2. while 반복문
-            int i = 0;
-            int[] intArray2 = { 52, 273, 32 };
+                // #1 12-2. 출력
+                Console.WriteLine("Hello World");
+                Console.Write("줄바꿈 싫어");
 
-            while(i < intArray2.Length)
-            {
-                Console.WriteLine(intArray2[i]);
-                i++; // 탈출을 위한 변수
-            }
+                // #1 12-3. 기본 자료형
+                // 정수
+                Console.WriteLine(52 + 4 - 1);
+                // 사칙연산자 = 산술 연산 = Arithmetic Operator
+                // + - * / %
 
-            // #3 14-6. foreach 반복문
-            string[] foreachArray = { "사과", "배", "포도" };
-            foreach (var item in foreachArray)
-            {
-                Console.WriteLine(item);
-            }
+                // 실수(Real Number)
+                Console.WriteLine(52.0);
 
-            // #4 21-2. 클래스 사용
-            Random random = new Random();
-            Console.WriteLine(random.Next(1, 7));
-            Console.WriteLine(random.Next(1, 7));
-            Console.WriteLine(random.Next(1, 7));
-            Console.WriteLine(random.Next(1, 7));
-            Console.WriteLine(random.Next(1, 7));
+                // 문자(Character)
+                Console.WriteLine('A');
+                Console.WriteLine('가');
 
-            Console.WriteLine(Math.Abs(-9)); // 9
-            Console.WriteLine(Math.Ceiling(42.3)); // 43
-            Console.WriteLine(Math.Floor(42.9)); // 42
-            Console.WriteLine(Math.Round(42.6)); // 43
-            Console.WriteLine(Math.Min(42, 1)); // 1
-            Console.WriteLine(Math.Max(42, 1)); // 42
-            Console.WriteLine(Math.PI); // 3.141592~~
+                // 문자열(string)
+                Console.WriteLine("Hello World");
+                // Escape Character 탈출 문자
+                Console.WriteLine("미\n\\림\t마\"고");
 
-            // #4 21-3. 클래스 생성
+                // 문자열 연결 연산자(Concatenation Operator)
+                Console.WriteLine("Hello" + " " + "World");
 
-            // #4 21-4. 인스턴스 변수
-            User user1 = new User();
-            user1.name = "이미림";
-            user1.phoneNumber = "010-1234-5678";
+                // 문자열 인덱스 접근
+                Console.WriteLine("Hello World"[4]); // "o" 출력
+                                                     // Console.WriteLine("Hello World"[100]); // 예외 발생
+                                                     // Console.WriteLine("Hello World"[-3]); // 예외 발생
 
-            Product p1 = new Product();
-            p1.name = "어른폰";
-            p1.price = 99999999;
+                // 주의 (문자열 연결 연산자 X, 덧셈 연산자임)
+                Console.WriteLine('가' + '힣');
 
-            Product p2 = new Product()
-            {
-                price = 3000, name = "감자폰"
-            };
+                // 논리 (Boolean)
+                Console.WriteLine(true);
+                Console.WriteLine(false);
 
-            Product p3 = new Product()
-            {
-                name = "공짜폰"
-            };
+                // 비교 연산자(Comparison Operator)
+                // == != > < >= <=
 
-            // #4 21-4. 클래스 변수
-            Console.WriteLine(Product.TAX_RATIO);
-            // Console.WriteLine(p1.TAX_RATIO); // 자바는 가능하나, C#은 X
+                // 논리 연산자(Logical Operator)
+                // && || !
+                Console.WriteLine(!true);
+                Console.WriteLine(true && false);
+                Console.WriteLine(true || false);
 
-            // #5 22-3. 클래스 메서드
 
-            // #5. 22-4. 메서드 오버로딩
-            Console.WriteLine(MyMath.Abs(-10)); // Abs(int)
-            Console.WriteLine(MyMath.Abs(10.0)); // Abs(double)
-            Console.WriteLine(MyMath.Abs(-10L)); // Abs(double)
-            Console.WriteLine(MyMath.Abs(3.0f)); // Abs(double)
+                // #1 12-4. 변수
+                string s = "문자열 자료형";
 
-            // #5 22-6. 생성자(+ 정적 생성자)
-            Console.WriteLine("첫 번째 위치");
-            Console.WriteLine(Sample.value);
-            Console.WriteLine("두 번째 위치");
-            Sample sample = new Sample();
-            Console.WriteLine("세 번째 위치");
+                // #1 12-5. 복합 대입 연산자
+                // += -= *= /=
+                string output = "Hello";
+                output += " World";
+                Console.WriteLine(output);
+
+                // #1 12-6. 증감 연산자
+                int number = 10;
+                Console.WriteLine(number++); // 10
+                Console.WriteLine(++number); // 12
+                Console.WriteLine(number--); // 12
+                Console.WriteLine(--number); // 10
+
+                // #1 12-8. var 키워드
+                var varnumber = 20;
+                // var abc; // 멤버변수로 사용 불가, 반드시 초기화 해줘야 함
+
+                // #1 12-9. 입력
+                string input = Console.ReadLine();
+                Console.WriteLine(input);
+
+                // #1 12-10. 자료형 변환
+                // 굉장히 중요!
+
+
+                // #2 13-1. if 조건문
+                bool condition = true;
+                if (condition)
+                {
+                    // some
+                } else if (condition)
+                {
+                    // some2
+                }
+                else
+                {
+                    // other
+                }
+
+                // #2 13-5. switch 조건문
+                int v = 0;
+                switch (v)
+                {
+                    case 0:
+                        //
+                        break;
+                    default:
+                        //
+                        break;
+                }
+
+                // #2 13-6. 삼항 연산자
+                Console.WriteLine(number % 2 == 0 ? true : false);
+
+                // #3 14-1. 반복문과 배열
+                int[] intArray = new int[100];
+                Console.WriteLine(intArray[99]);
+
+                // #3 14-2. while 반복문
+                int i = 0;
+                int[] intArray2 = { 52, 273, 32 };
+
+                while (i < intArray2.Length)
+                {
+                    Console.WriteLine(intArray2[i]);
+                    i++; // 탈출을 위한 변수
+                }
+
+                // #3 14-6. foreach 반복문
+                string[] foreachArray = { "사과", "배", "포도" };
+                foreach (var item in foreachArray)
+                {
+                    Console.WriteLine(item);
+                }
+
+                // #4 21-2. 클래스 사용
+                Random random = new Random();
+                Console.WriteLine(random.Next(1, 7));
+                Console.WriteLine(random.Next(1, 7));
+                Console.WriteLine(random.Next(1, 7));
+                Console.WriteLine(random.Next(1, 7));
+                Console.WriteLine(random.Next(1, 7));
+
+                Console.WriteLine(Math.Abs(-9)); // 9
+                Console.WriteLine(Math.Ceiling(42.3)); // 43
+                Console.WriteLine(Math.Floor(42.9)); // 42
+                Console.WriteLine(Math.Round(42.6)); // 43
+                Console.WriteLine(Math.Min(42, 1)); // 1
+                Console.WriteLine(Math.Max(42, 1)); // 42
+                Console.WriteLine(Math.PI); // 3.141592~~
+
+                // #4 21-3. 클래스 생성
+
+                // #4 21-4. 인스턴스 변수
+                User user1 = new User();
+                user1.name = "이미림";
+                user1.phoneNumber = "010-1234-5678";
+
+                Product p1 = new Product();
+                p1.name = "어른폰";
+                p1.price = 99999999;
+
+                Product p2 = new Product()
+                {
+                    price = 3000, name = "감자폰"
+                };
+
+                Product p3 = new Product()
+                {
+                    name = "공짜폰"
+                };
+
+                // #4 21-4. 클래스 변수
+                Console.WriteLine(Product.TAX_RATIO);
+                // Console.WriteLine(p1.TAX_RATIO); // 자바는 가능하나, C#은 X
+
+                // #5 22-3. 클래스 메서드
+
+                // #5. 22-4. 메서드 오버로딩
+                Console.WriteLine(MyMath.Abs(-10)); // Abs(int)
+                Console.WriteLine(MyMath.Abs(10.0)); // Abs(double)
+                Console.WriteLine(MyMath.Abs(-10L)); // Abs(double)
+                Console.WriteLine(MyMath.Abs(3.0f)); // Abs(double)
+
+                // #5 22-6. 생성자(+ 정적 생성자)
+                Console.WriteLine("첫 번째 위치");
+                Console.WriteLine(Sample.value);
+                Console.WriteLine("두 번째 위치");
+                Sample sample = new Sample();
+                Console.WriteLine("세 번째 위치");
 
             // #5 22-7. 소멸자
 
+            // #5. 22-8. 속성(Property)
+            Box b = new Box();
+            b.width = 180;
+            b.Height = 100;
+            }
         }
     }
-}
