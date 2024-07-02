@@ -75,6 +75,16 @@ namespace CSPractice1
         internal class Program
         {
 
+
+            class Test
+            {
+                public int value = 10;
+            }
+            static void Change(Test t)
+            {
+                t.value = 20;
+            }
+
             class ThirdClass
             {
 
@@ -282,6 +292,13 @@ namespace CSPractice1
             Box b = new Box();
             b.width = 180;
             b.Height = 100;
+
+            // #5 22-9. 값 복사와 참조 복사
+            Test test = new Test();
+            test.value = 100;
+            Change(test);
+            Console.WriteLine(test.value); // 20
+
             }
         }
     }
